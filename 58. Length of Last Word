@@ -1,0 +1,15 @@
+class Solution {
+    public int lengthOfLastWord(String s) {
+        s=s.trim();
+        // System.out.println(s);
+        String []data=s.split(" ");
+        int count=0;
+        for (String a:data) {
+          //  System.out.println(a);
+            count++;
+        }
+      //  System.out.println(count);
+        // System.out.println(data[count-1].length());
+        return (data[count-1].length());
+    }
+}
