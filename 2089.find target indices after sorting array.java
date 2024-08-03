@@ -13,8 +13,8 @@ class Solution {
 
         // 1,2,5,2,3
         // 1,2,2,3,5
-        //smaller=1;
-        //larger=2;
+        //smallerElement=1;
+        //largerElement=2;
         //length=5
 
         for(int a=smaller;a<arr.length-larger;a++){
