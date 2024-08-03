@@ -1,0 +1,14 @@
+class Solution {
+    public int maximumCount(int[] nums) {
+        int negative=0, positive=0;
+
+        for(int a:nums){
+            if(a>0){
+                positive++;
+            }else if(a<0) {
+                negative++;
+            }
+        }
+        return (positive > negative) ? positive : negative;
+    }
+}
