@@ -1,0 +1,18 @@
+class Solution {
+    public int pivotIndex(int[] arr) {
+       int totalSum=0;
+
+       for(int a: arr){
+        totalSum+=a;
+       }
+       int left=0;
+       for(int a=0;a<arr.length;a++){
+
+        if(left == totalSum-left-arr[a]){
+            return a;
+        }
+        left+=arr[a];
+       }
+       return -1;
+    }
+}
