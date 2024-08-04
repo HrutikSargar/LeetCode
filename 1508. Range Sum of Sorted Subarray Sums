@@ -1,0 +1,26 @@
+class Solution {
+    public int rangeSum(int[] nums, int n, int left, int right) {
+        int [] data=new int [n*(n+1)/2];
+        int index=0;
+        for(int a=0;a<n;a++){
+           int currentSum=0;
+            for(int b=a;b<n;b++){
+                currentSum+=nums[b];
+                data[index++]=currentSum;
+            }
+        }
+        Arrays.sort(data);
+
+        int ans =0;
+
+        int mod=(int)1e9 +7;
+        
+        for(int a=left-1;a<right;a++)
+        {
+            ans=ans % mod  +data[a];
+           // ans+=;
+        }
+        return ans;
+
+    }
+}
