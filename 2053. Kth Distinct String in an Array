@@ -1,0 +1,26 @@
+class Solution {
+    public String kthDistinct(String[] arr, int k) {
+        HashMap<String , Integer> data =new HashMap<>();
+
+        for(String a: arr){
+            if(data.containsKey(a)){
+                data.put(a,data.get(a)+1);
+            }else{
+                data.put(a,1);
+            }
+        }
+         int current=0;
+        for(String a:arr){
+           if( data.get(a)>1) continue;
+           current++;
+           
+           if(current==k){
+            return a;
+           }
+
+        }
+        return "";
+
+       
+    }
+}
