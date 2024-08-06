@@ -1,0 +1,31 @@
+class Solution {
+    public int minimumPushes(String word) {
+        //data array taken for mapping
+        int [] data =new int [26];
+
+        //mapped over word and counted appearence of every word
+        for(int a=0;a<word.length();a++){
+            data[word.charAt(a)-'a']++;
+        }
+        //res for result 
+        int res=0;
+
+        //to check how many distinct numbers
+        //only 8 should be distinct , after that increment
+        int distinct=0;
+
+        //sort the array 
+        Arrays.sort(data);
+
+        //for loop in reverse order
+        for(int a=data.length-1;a>=0;a--){
+
+            //res 
+            res += data[a] *(1+ distinct /8);
+            //incremeent the distinct integer , after distinct==8 , it will multiply res*2
+            distinct++;
+        }
+        //return the res
+        return res;
+    }
+}
