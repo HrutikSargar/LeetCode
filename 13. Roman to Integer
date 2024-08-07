@@ -1,0 +1,25 @@
+class Solution{
+ public int romanToInt(String s) {
+    //from left to right
+    //largest to smallest : add them up
+    //smallest to largest :substract them
+        HashMap<Character,Integer> data =new HashMap<>();
+        data.put('I', 1);
+        data.put('V', 5);
+        data.put('X', 10);
+        data.put('L', 50); 
+        data.put('C', 100);
+        data.put('D', 500);
+        data.put('M', 1000);
+
+        int sum=0;
+        for(int a=0;a<s.length();a++){
+            if(  a < s.length()-1 && data.get(s.charAt(a))<data.get(s.charAt(a+1)) ){
+                sum -= data.get(s.charAt(a));
+            }else{
+                 sum += data.get(s.charAt(a));
+            }
+        }
+        return sum;
+    } 
+}
