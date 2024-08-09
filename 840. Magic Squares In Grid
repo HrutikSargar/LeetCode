@@ -1,0 +1,60 @@
+class Solution {
+    public int numMagicSquaresInside(int[][] grid) {
+        if (grid.length<3){
+            return 0;
+        }
+        int row=grid.length;
+        int col=grid[0].length;
+        int count=0;
+//        System.out.println(row+" "+col);//3 4
+
+        for (int a=0;a<=row-3;a++){
+            for (int b=0;b<=col-3;b++){
+                boolean ans =isMagicSquare(grid,a,b);
+                if (ans){
+                    count++;
+                }
+            }
+
+        }
+        return count;
+    }
+    private static boolean isMagicSquare(int [][] grid, int rowStart, int colStart){
+        boolean [] seen =new boolean[10];
+        for (int a=rowStart;a<rowStart+3;a++){
+            for (int b=colStart;b<colStart+3;b++){
+                int num=grid[a][b];
+                //check the number in grid is in bet 1 to 9 and is not doubled
+                if (num<1 || num>9 || seen[num]){
+                    return false;
+                }
+                seen[num]=true;
+            }
+        }
+        //check sum (calculate sum of first row)
+        int suOfFRow=grid[rowStart][colStart]+grid[rowStart][colStart+1]+grid[rowStart][colStart+2];
+
+        //check sum  for every other row
+        for (int a=rowStart;a<rowStart+3;a++){
+            if (grid[a][colStart]+grid[a][colStart+1]+grid[a][colStart+2] != suOfFRow){
+                return false;
+            }
+        }
+
+        //check for every column
+        for (int a=colStart;a<colStart+3;a++){
+            if (grid[rowStart][a]+ grid[rowStart+1][a]+ grid[rowStart+2][a] != suOfFRow){
+                return false;
+            }
+        }
+
+        //check diagonal
+       if (grid[rowStart][colStart] +  grid[rowStart+1][colStart+1]+ grid[rowStart+2][colStart+2] != suOfFRow){
+           return false;
+       }
+       if (grid[rowStart][colStart+2] + grid[rowStart+1][colStart+1] + grid[rowStart+2][colStart] != suOfFRow){
+           return false;
+       }
+        return true;
+    }
+}
