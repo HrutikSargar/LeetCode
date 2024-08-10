@@ -1,0 +1,22 @@
+class Solution {
+    public boolean uniqueOccurrences(int[] arr) {
+        //HASHMAP AND HASHSET BOTH ARE USED 
+        HashMap<Integer, Integer> data =new HashMap<>();
+
+        for(int a=0;a<arr.length;a++){
+            if(data.containsKey(arr[a])){
+                data.put(arr[a],data.get(arr[a])+1);
+            }else{
+                data.put(arr[a],1);
+            }
+        }
+        HashSet<Integer>ans =new HashSet<>();
+        for(int a:data.values()){
+            if(ans.contains(a)){
+                return false;
+            }
+            ans.add(a);
+        }
+        return true;
+    }
+}
