@@ -1,0 +1,28 @@
+class Solution {
+    public int maxVowels(String s, int k) {
+        //SLIDING WINDOW ALGORITHM
+        char []data = s.toCharArray();
+
+        int sum=0;
+        int max=0;
+        for(int a=0;a<k;a++){
+            if(isVowel(data[a])){
+                sum++;
+            }
+        }
+        max=sum;
+        for(int a=k;a<data.length;a++){
+            if(isVowel(data[a])){
+                sum++;
+            }
+            if(isVowel(data[a-k])){
+                sum--;
+            }
+            max=Math.max(max,sum);
+        }
+        return max;
+    }
+    private boolean isVowel(char ch){
+        return ch=='a' || ch=='e' || ch=='i' || ch=='o' || ch=='u';
+    }
+}
