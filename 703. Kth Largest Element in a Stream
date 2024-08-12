@@ -1,0 +1,42 @@
+class KthLargest {
+    int k;
+    PriorityQueue<Integer> data ;
+
+    public KthLargest(int k, int[] nums) {
+
+        this.k=k;
+
+        data=new PriorityQueue<>();
+
+        for(int a:nums){
+
+           if(data.size()<k){
+                data.offer(a);
+           }else if(data.peek()<a){
+
+                data.offer(a);
+
+                if(data.size()>k){
+                    data.poll();
+                }
+           }
+        }
+    }
+    
+    public int add(int val) {
+        if(data.size() < k){
+            data.offer(val);
+        }
+        else if( !data.isEmpty()&&data.peek()<val){
+            data.offer(val);
+            data.poll();
+        }
+        return data.peek();
+    }
+}
+
+/**
+ * Your KthLargest object will be instantiated and called as such:
+ * KthLargest obj = new KthLargest(k, nums);
+ * int param_1 = obj.add(val);
+ */
