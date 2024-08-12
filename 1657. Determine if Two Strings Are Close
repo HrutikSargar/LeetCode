@@ -1,0 +1,26 @@
+class Solution {
+     public  boolean closeStrings(String word1, String word2) {
+       int [] data1=new int [26];
+        int [] data2=new int [26];
+        for(char ch: word1.toCharArray()){
+            data1[ch-'a']++;
+        }
+        for(char ch: word2.toCharArray()){
+            data2[ch-'a']++;
+        }
+        for(int a=0;a<26;a++){
+            if((data1[a]==0 && data2[a]!=0) || (data1[a]!=0 && data2[a]==0)){
+                return false;
+            }
+        }
+        Arrays.sort(data1);
+        Arrays.sort(data2);
+
+        for(int a=0;a<26;a++ ){
+            if(data1[a] !=data2[a]){
+                return false;
+            }
+        }
+        return true;
+    }
+}
