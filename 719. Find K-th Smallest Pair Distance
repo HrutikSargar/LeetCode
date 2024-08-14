@@ -1,0 +1,23 @@
+class Solution {
+    public int smallestDistancePair(int[] nums, int k) {
+        int ans=-1;
+        for(int a: nums){
+            ans=Math.max(ans,a);
+        }
+        int [] arr=new int [ans+1];
+        for(int a=0;a<nums.length;a++){
+            for(int b=a+1;b<nums.length;b++){
+                int temp=Math.abs(nums[a]- nums[b]);
+                arr[temp]++;
+            }
+        }
+      
+    for(int a=0;a<arr.length;a++){
+        k-=arr[a];
+        if(k<=0){
+            return a;
+        }
+    }
+        return -1;
+    }
+}
